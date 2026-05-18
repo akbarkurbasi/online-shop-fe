@@ -1,0 +1,24 @@
+[
+  {
+    "id": "art-001",
+    "title": "The Ultimate Guide to Perfect Extraction",
+    "description": "Learn how to dial in your espresso like a professional barista",
+    "content": "Extraction is the heart of coffee brewing. In this guide, we dive deep into grind size, pressure, temperature, and yield to help you achieve the perfect shot of espresso every morning.",
+    "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
+    "author": "Jessica Bean",
+    "category": "Guides",
+    "published_at": "2024-03-15",
+    "featured": true
+  },
+  {
+    "id": "art-002",
+    "title": "Understanding Burr Sets",
+    "description": "Flat vs. Conical burrs and why it matters for your cup",
+    "content": "The grinder is arguably the most important piece of equipment you will ever buy. We compare flat and conical burrs to understand how they impact flavor clarity and body.",
+    "image": "https://images.unsplash.com/photo-1605333420845-a745c4fc2194?auto=format&fit=crop&q=80&w=800",
+    "author": "Michael Roast",
+    "category": "Equipment",
+    "published_at": "2024-03-10",
+    "featured": true
+  }
+]

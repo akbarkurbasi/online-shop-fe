@@ -1,0 +1,1232 @@
+{
+  "categories": [
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234001",
+      "name": "Tees",
+      "slug": "tees"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234002",
+      "name": "Hoodies",
+      "slug": "hoodies"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234003",
+      "name": "Track Pants",
+      "slug": "track-pants"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234004",
+      "name": "Outerwear",
+      "slug": "outerwear"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234005",
+      "name": "Sneakers",
+      "slug": "sneakers"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234006",
+      "name": "Shorts",
+      "slug": "shorts"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234007",
+      "name": "Sweatshirts",
+      "slug": "sweatshirts"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234008",
+      "name": "Jackets",
+      "slug": "jackets"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234009",
+      "name": "Caps",
+      "slug": "caps"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4789-90ab-cdef01234010",
+      "name": "Accessories",
+      "slug": "accessories"
+    }
+  ],
+  "products": [
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000001",
+      "name": "Volt Atlas Tee",
+      "description": "The flagship everyday tee, cut from cotton-modal jersey. Soft hand, honest drape, built to wear in.",
+      "category": "tees",
+      "price": 295000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.8,
+      "reviews": 286,
+      "stock": 23,
+      "inStock": true,
+      "featured": true,
+      "created_at": "2026-05-10T10:30:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "essentials",
+        "flagship",
+        "tee"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-010000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-010000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 5
+        },
+        {
+          "id": "11111111-cccc-4111-9111-010000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 7
+        },
+        {
+          "id": "11111111-cccc-4111-9111-010000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-010000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 3
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000002",
+      "name": "Volt Drift Tee",
+      "description": "A boxy take on the Atlas, in textured slub jersey. Looser shoulder, longer hem, weekend-ready.",
+      "category": "tees",
+      "price": 285000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.6,
+      "reviews": 142,
+      "stock": 28,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-08T11:00:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "boxy",
+        "slub"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-020000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-020000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 7
+        },
+        {
+          "id": "11111111-cccc-4111-9111-020000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 9
+        },
+        {
+          "id": "11111111-cccc-4111-9111-020000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-020000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000003",
+      "name": "Volt Pacer Hoodie",
+      "description": "Brushed-back fleece in heather grey. Kangaroo pocket, ribbed trim — the staple, refined.",
+      "category": "hoodies",
+      "price": 750000,
+      "originalPrice": 850000,
+      "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.9,
+      "reviews": 412,
+      "stock": 37,
+      "inStock": true,
+      "featured": true,
+      "created_at": "2026-05-11T14:15:00.000Z",
+      "tags": [
+        "sale",
+        "fw26",
+        "fleece",
+        "heather",
+        "essentials"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-030000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-030000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 8
+        },
+        {
+          "id": "11111111-cccc-4111-9111-030000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 11
+        },
+        {
+          "id": "11111111-cccc-4111-9111-030000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 9
+        },
+        {
+          "id": "11111111-cccc-4111-9111-030000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 5
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000004",
+      "name": "Volt Echo Hoodie",
+      "description": "Heavyweight 500 gsm loopback in deep onyx. Structured silhouette with a contrast drawcord and tricot-lined hood.",
+      "category": "hoodies",
+      "price": 875000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.7,
+      "reviews": 168,
+      "stock": 22,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-09T09:00:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "heavyweight",
+        "onyx"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-040000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-040000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 5
+        },
+        {
+          "id": "11111111-cccc-4111-9111-040000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 7
+        },
+        {
+          "id": "11111111-cccc-4111-9111-040000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 5
+        },
+        {
+          "id": "11111111-cccc-4111-9111-040000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000005",
+      "name": "Volt Mile Pant",
+      "description": "Tapered four-way stretch with zip ankles and angled side pockets. The track pant, refined.",
+      "category": "track-pants",
+      "price": 695000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.6,
+      "reviews": 198,
+      "stock": 25,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-30T09:00:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "tapered",
+        "tech",
+        "track"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-050000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-050000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 5
+        },
+        {
+          "id": "11111111-cccc-4111-9111-050000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 8
+        },
+        {
+          "id": "11111111-cccc-4111-9111-050000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-050000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 3
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000006",
+      "name": "Volt Slope Pant",
+      "description": "Wide-leg cousin to the Mile. Textured nylon-cotton blend with deep pockets and a blind hem.",
+      "category": "track-pants",
+      "price": 745000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.5,
+      "reviews": 92,
+      "stock": 16,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-01T13:20:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "wide-leg",
+        "tech"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-060000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-060000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-060000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 5
+        },
+        {
+          "id": "11111111-cccc-4111-9111-060000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-060000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000007",
+      "name": "Volt Halo Parka",
+      "description": "Weatherproof shell with sealed seams and a three-panel adjustable hood. Recycled nylon outer, brushed mesh lining.",
+      "category": "outerwear",
+      "price": 2150000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.9,
+      "reviews": 104,
+      "stock": 18,
+      "inStock": true,
+      "featured": true,
+      "created_at": "2026-05-02T16:45:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "tech",
+        "waterproof",
+        "flagship"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-070000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-070000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-070000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-070000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-070000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000008",
+      "name": "Volt Reach Vest",
+      "description": "Utility vest with seven pockets and a magnetic front. The transitional layer that does the most.",
+      "category": "outerwear",
+      "price": 1150000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1604644401890-0bd678c83788?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.7,
+      "reviews": 73,
+      "stock": 12,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-12T10:00:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "utility",
+        "vest"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-080000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 1
+        },
+        {
+          "id": "11111111-cccc-4111-9111-080000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-080000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-080000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-080000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 1
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000009",
+      "name": "Volt Orbit Runner",
+      "description": "Performance street runner with a sculpted EVA midsole and engineered mesh upper. Reactive cushioning for daily distance.",
+      "category": "sneakers",
+      "price": 2450000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.8,
+      "reviews": 374,
+      "stock": 4,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-03T10:15:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "running",
+        "lifestyle"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-090000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 0
+        },
+        {
+          "id": "11111111-cccc-4111-9111-090000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 1
+        },
+        {
+          "id": "11111111-cccc-4111-9111-090000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 1
+        },
+        {
+          "id": "11111111-cccc-4111-9111-090000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 1
+        },
+        {
+          "id": "11111111-cccc-4111-9111-090000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 1
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000010",
+      "name": "Volt Pulse Low",
+      "description": "Low-profile court silhouette in recycled leather. The daily walk-around that pairs with everything in the bag.",
+      "category": "sneakers",
+      "price": 1850000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.7,
+      "reviews": 218,
+      "stock": 0,
+      "inStock": false,
+      "featured": false,
+      "created_at": "2026-04-25T11:20:00.000Z",
+      "tags": [
+        "soldout",
+        "fw26",
+        "court",
+        "lifestyle"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-100000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 0
+        },
+        {
+          "id": "11111111-cccc-4111-9111-100000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 0
+        },
+        {
+          "id": "11111111-cccc-4111-9111-100000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 0
+        },
+        {
+          "id": "11111111-cccc-4111-9111-100000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 0
+        },
+        {
+          "id": "11111111-cccc-4111-9111-100000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000011",
+      "name": "Volt Mesa Short",
+      "description": "5-inch training short with double-layer mesh, bonded liner and an internal drawcord. Quick-drying, never restrictive.",
+      "category": "shorts",
+      "price": 425000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1604176354204-9268737828e4?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.5,
+      "reviews": 92,
+      "stock": 32,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-22T08:30:00.000Z",
+      "tags": [
+        "new",
+        "training",
+        "mesh"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-110000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-110000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 8
+        },
+        {
+          "id": "11111111-cccc-4111-9111-110000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 11
+        },
+        {
+          "id": "11111111-cccc-4111-9111-110000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-110000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 3
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000012",
+      "name": "Volt Sprint Short",
+      "description": "7-inch running short with a built-in liner, two zip back pockets and reflective accents.",
+      "category": "shorts",
+      "price": 395000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.6,
+      "reviews": 118,
+      "stock": 41,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-24T08:50:00.000Z",
+      "tags": [
+        "new",
+        "running",
+        "performance"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-120000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-120000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 11
+        },
+        {
+          "id": "11111111-cccc-4111-9111-120000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 13
+        },
+        {
+          "id": "11111111-cccc-4111-9111-120000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 8
+        },
+        {
+          "id": "11111111-cccc-4111-9111-120000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 3
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000013",
+      "name": "Volt Anchor Crew",
+      "description": "480 gsm loopback crew with a relaxed boxy fit and twin-needle stitching. The blank canvas you will layer for years.",
+      "category": "sweatshirts",
+      "price": 685000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.8,
+      "reviews": 224,
+      "stock": 28,
+      "inStock": true,
+      "featured": true,
+      "created_at": "2026-05-04T13:00:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "heavyweight",
+        "essentials"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-130000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-130000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-130000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 9
+        },
+        {
+          "id": "11111111-cccc-4111-9111-130000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 7
+        },
+        {
+          "id": "11111111-cccc-4111-9111-130000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 3
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000014",
+      "name": "Volt Field Crew",
+      "description": "Mid-weight cotton crew in deep charcoal with a tonal embroidered logo at the chest.",
+      "category": "sweatshirts",
+      "price": 645000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1542406775-ade58c52d2e4?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.5,
+      "reviews": 96,
+      "stock": 19,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-05T15:30:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "midweight",
+        "charcoal"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-140000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-140000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-140000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 6
+        },
+        {
+          "id": "11111111-cccc-4111-9111-140000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 5
+        },
+        {
+          "id": "11111111-cccc-4111-9111-140000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000015",
+      "name": "Volt Beacon Jacket",
+      "description": "Ripstop coach jacket with snap-front closure, two side pockets and a flannel-backed interior. Layer it over everything.",
+      "category": "jackets",
+      "price": 1350000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.6,
+      "reviews": 128,
+      "stock": 13,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-28T15:30:00.000Z",
+      "tags": [
+        "new",
+        "ripstop",
+        "coach",
+        "fw26"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-150000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-150000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 4
+        },
+        {
+          "id": "11111111-cccc-4111-9111-150000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-150000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-150000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 1
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000016",
+      "name": "Volt Vault Coach",
+      "description": "Heavier coach silhouette in matte recycled nylon with stand collar and concealed magnetic front.",
+      "category": "jackets",
+      "price": 1450000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.7,
+      "reviews": 196,
+      "stock": 9,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-26T16:00:00.000Z",
+      "tags": [
+        "new",
+        "fw26",
+        "bomber",
+        "outerwear"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-160000001",
+          "name": "X-Small",
+          "type": "size",
+          "value": "XS",
+          "stock": 1
+        },
+        {
+          "id": "11111111-cccc-4111-9111-160000002",
+          "name": "Small",
+          "type": "size",
+          "value": "S",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-160000003",
+          "name": "Medium",
+          "type": "size",
+          "value": "M",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-160000004",
+          "name": "Large",
+          "type": "size",
+          "value": "L",
+          "stock": 2
+        },
+        {
+          "id": "11111111-cccc-4111-9111-160000005",
+          "name": "X-Large",
+          "type": "size",
+          "value": "XL",
+          "stock": 1
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000017",
+      "name": "Volt Marker Cap",
+      "description": "Six-panel unstructured cap in brushed cotton twill with an embroidered tonal logo and an adjustable metal buckle.",
+      "category": "caps",
+      "price": 295000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.6,
+      "reviews": 87,
+      "stock": 60,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-18T12:00:00.000Z",
+      "tags": [
+        "essentials",
+        "logo",
+        "headwear"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-170000001",
+          "name": "Black",
+          "type": "color",
+          "value": "#0A0A0A",
+          "stock": 22
+        },
+        {
+          "id": "11111111-cccc-4111-9111-170000002",
+          "name": "Cream",
+          "type": "color",
+          "value": "#F5F1E8",
+          "stock": 18
+        },
+        {
+          "id": "11111111-cccc-4111-9111-170000003",
+          "name": "Cobalt",
+          "type": "color",
+          "value": "#1E3CFF",
+          "stock": 20
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000018",
+      "name": "Volt Crown 6-Panel",
+      "description": "Structured six-panel cap with a flat brim, stitched eyelets and a snap-back adjustable strap.",
+      "category": "caps",
+      "price": 285000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.5,
+      "reviews": 41,
+      "stock": 30,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-04-20T14:00:00.000Z",
+      "tags": [
+        "essentials",
+        "six-panel",
+        "headwear"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-180000001",
+          "name": "Black",
+          "type": "color",
+          "value": "#0A0A0A",
+          "stock": 12
+        },
+        {
+          "id": "11111111-cccc-4111-9111-180000002",
+          "name": "Charcoal",
+          "type": "color",
+          "value": "#3A3A3A",
+          "stock": 10
+        },
+        {
+          "id": "11111111-cccc-4111-9111-180000003",
+          "name": "White",
+          "type": "color",
+          "value": "#F5F5F5",
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000019",
+      "name": "Volt Trail Tote",
+      "description": "Heavyweight 14 oz organic canvas tote with reinforced bartack stitching, an internal slip pocket and a screen-printed Volt mark.",
+      "category": "accessories",
+      "price": 395000,
+      "originalPrice": 495000,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.6,
+      "reviews": 53,
+      "stock": 5,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-06T17:45:00.000Z",
+      "tags": [
+        "sale",
+        "canvas",
+        "tote",
+        "accessories"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-190000001",
+          "name": "Sand",
+          "type": "color",
+          "value": "#E8D8B8",
+          "stock": 3
+        },
+        {
+          "id": "11111111-cccc-4111-9111-190000002",
+          "name": "Black",
+          "type": "color",
+          "value": "#0A0A0A",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "f0e1d2c3-b4a5-4968-87b9-1000000020",
+      "name": "Volt Day Crossbody",
+      "description": "Compact 2L crossbody in tear-resistant ripstop with a magnetic main pocket and a hidden zip security compartment.",
+      "category": "accessories",
+      "price": 525000,
+      "originalPrice": null,
+      "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=1200",
+      "rating": 4.7,
+      "reviews": 71,
+      "stock": 14,
+      "inStock": true,
+      "featured": false,
+      "created_at": "2026-05-07T12:10:00.000Z",
+      "tags": [
+        "new",
+        "ripstop",
+        "crossbody",
+        "accessory"
+      ],
+      "variants": [
+        {
+          "id": "11111111-cccc-4111-9111-200000001",
+          "name": "Black",
+          "type": "color",
+          "value": "#0A0A0A",
+          "stock": 9
+        },
+        {
+          "id": "11111111-cccc-4111-9111-200000002",
+          "name": "Olive",
+          "type": "color",
+          "value": "#3F4F2E",
+          "stock": 5
+        }
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "b0c1d2e3-f4a5-4789-90ab-cdef00000001",
+      "title": "Drop 02: Field Notes",
+      "slug": "drop-02-field-notes",
+      "category": "Drops",
+      "author": "Editorial Team",
+      "featured": true,
+      "readTime": 4,
+      "publishedAt": "2026-05-12T10:00:00.000Z",
+      "excerpt": "Five new silhouettes, three returning favourites.",
+      "description": "A first look at the second drop of FW 26 — the parka, the bomber, and the pieces bridging studio and street.",
+      "image": "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&q=80&w=1600",
+      "content": "<p>FW 26 / Drop 02 lands today. Five new silhouettes, three restocks, one quiet idea: the line between studio and street has been blurred for a while, and the wardrobe should reflect that.</p><h2>What dropped</h2><ul><li><strong>Volt Halo Parka</strong> — our heaviest outerwear of the season.</li><li><strong>Volt Vault Coach</strong> — the heavier coach silhouette.</li><li><strong>Volt Reach Vest</strong> — the most-asked-for piece.</li><li><strong>Volt Slope Pant</strong> — wide-leg cousin to the Mile.</li><li><strong>Volt Drift Tee</strong> — the boxy Atlas.</li></ul><h2>What is back</h2><p>The Marker Cap returns in three colourways. The Pacer Hoodie is restocked in Heather Grey. The Atlas Tee is back across all sizes.</p><blockquote>Move differently.</blockquote>"
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4789-90ab-cdef00000002",
+      "title": "Studio Diary: The Coach Jacket",
+      "slug": "studio-diary-the-coach-jacket",
+      "category": "Behind The Scenes",
+      "author": "Studio Team",
+      "featured": false,
+      "readTime": 5,
+      "publishedAt": "2026-05-08T14:30:00.000Z",
+      "excerpt": "Three patterns, two fabrics, one quiet revelation about durability.",
+      "description": "How a single garment got rebuilt three times before it shipped — a studio diary on the Beacon Jacket.",
+      "image": "https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&q=80&w=1600",
+      "content": "<p>The Beacon Jacket went through three pattern revisions before we cut a single production unit.</p><h2>Pattern 01 — Too boxy</h2><p>The first attempt was a one-for-one homage. Honest fit, broad shoulders, nobody on the team wore it twice.</p><h2>Pattern 02 — Too sharp</h2><p>We tapered the waist. The result felt like a club jacket, not a coach.</p><h2>Pattern 03 — Field</h2><p>The final pattern keeps the dropped shoulder, broadens the hem by 4 cm, and shaves 1.5 cm off the sleeve. The fabric is a 3-layer ripstop with a brushed flannel back. It moves with you without feeling like a costume.</p>"
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4789-90ab-cdef00000003",
+      "title": "What Makes a Performance Tee",
+      "slug": "what-makes-a-performance-tee",
+      "category": "Tech",
+      "author": "Product Team",
+      "featured": true,
+      "readTime": 4,
+      "publishedAt": "2026-05-05T09:00:00.000Z",
+      "excerpt": "Modal blends, brushed finishes, moisture management — the Atlas, taken apart.",
+      "description": "Why the Volt Atlas Tee uses 95% cotton modal and not 100% cotton — and what that means when you actually move in it.",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=1600",
+      "content": "<p>If you have ever wondered why high-end sportswear costs what it does, the answer is buried in the spec sheet. Here is ours, demystified.</p><h2>The fabric</h2><p>95% cotton, 5% elastane. Cotton-modal jersey, 180 gsm. Loomed in Portugal. The elastane is what gives the tee its recovery.</p><h2>The finish</h2><p>A reactive moisture-wicking treatment is bonded to the yarn before knit. Unlike spray-on treatments, this one survives the wash cycle.</p><h2>What you feel</h2><p>Soft hand, no clinginess. Performs like a base layer, wears like an heirloom.</p>"
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4789-90ab-cdef00000004",
+      "title": "Layering, Reduced to Four",
+      "slug": "layering-reduced-to-four",
+      "category": "Style",
+      "author": "Editorial Team",
+      "featured": false,
+      "readTime": 5,
+      "publishedAt": "2026-04-30T11:15:00.000Z",
+      "excerpt": "Four layers, ten pieces. The dressing principle behind the collection.",
+      "description": "A simple framework for building a wardrobe that survives the seasonal swing.",
+      "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1600",
+      "content": "<p>Most of us own too many clothes and wear too few. The fix is not buying less — it is buying with intent.</p><h2>01 — Base</h2><p>The Atlas Tee. The Anchor Crew. These touch your skin. Comfort matters more than statement.</p><h2>02 — Mid</h2><p>The Pacer Hoodie. The Echo Hoodie. Warmth without bulk. Sleeve length is everything.</p><h2>03 — Shell</h2><p>The Beacon Jacket. The Vault Coach. The Reach Vest. Face the weather. Choose by weight, not by colour.</p><h2>04 — Hero</h2><p>The Halo Parka. This is what people see first. Make sure it deserves the attention.</p><blockquote>Ten pieces, worn well, beats forty worn once.</blockquote>"
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4789-90ab-cdef00000005",
+      "title": "Restocked: Logo Cap, Three Ways",
+      "slug": "restocked-logo-cap-three-ways",
+      "category": "Restocks",
+      "author": "Editorial Team",
+      "featured": false,
+      "readTime": 2,
+      "publishedAt": "2026-04-20T08:45:00.000Z",
+      "excerpt": "Marker Cap returns in Black, Cream, and Cobalt.",
+      "description": "The six-panel Volt Marker Cap is back — and we tightened the strap.",
+      "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=1600",
+      "content": "<p>The Marker Cap sold through its first run in eleven days. Here is what changed for the restock.</p><h2>New hardware</h2><p>The adjustable buckle is now matte brass instead of nickel. Tighter tolerances, no more clinking against your sunglasses.</p><h2>Same cut</h2><p>Brushed cotton twill. Six-panel unstructured crown. Curved brim. Tonal embroidered logo.</p><h2>The colours</h2><p>Black, Cream, Cobalt. Pick one. Pick three.</p>"
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4789-90ab-cdef00000006",
+      "title": "On Form: A Sprinter's Wardrobe",
+      "slug": "on-form-a-sprinters-wardrobe",
+      "category": "Athletes",
+      "author": "Editorial Team",
+      "featured": true,
+      "readTime": 6,
+      "publishedAt": "2026-04-15T15:00:00.000Z",
+      "excerpt": "Three athletes, three definitions of form. The kit that survives both.",
+      "description": "Three sprinters from the Jakarta Athletics Club on form, kit, and what they wear off-track.",
+      "image": "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&q=80&w=1600",
+      "content": "<p>We sat down with three sprinters to talk about form, kit, and what they actually wear when not training.</p><h2>On form</h2><p><em>Form is the smallest version of the right movement, repeated until it is the only version,</em> says Rina. You do not see it. You feel it.</p><h2>On kit</h2><p>All three named the same three pieces they wear off-track: a heavy hoodie, a relaxed track pant, a low-profile sneaker. <em>Performance fabric, civilian fit. That is the kit that survives both worlds,</em> Dewi said.</p><h2>On Volt</h2><p>The team has been wearing Volt for three seasons. The Pulse Low and the Pacer Hoodie get the most reps. The Atlas Tee, surprisingly, is the most photographed.</p>"
+    }
+  ]
+}

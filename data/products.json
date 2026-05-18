@@ -1,0 +1,162 @@
+[
+  {
+    "id": "prod-001",
+    "name": "House Blend Beans",
+    "description": "Our signature blend with notes of chocolate, caramel, and a hint of berries. Perfect for espresso and milk-based drinks.",
+    "category": "beans",
+    "price": 285000,
+    "image": "https://athome.starbucks.com/sites/default/files/2022-05/CAH_PDP_House_1842x1542_Whole_shadow.png",
+    "rating": 4.9,
+    "reviews": 342,
+    "stock": 50,
+    "inStock": true,
+    "featured": true,
+    "variants": [
+      {
+        "id": "v1-1",
+        "name": "250g",
+        "type": "size",
+        "value": "250g",
+        "stock": 20
+      },
+      {
+        "id": "v1-2",
+        "name": "500g",
+        "type": "size",
+        "value": "500g",
+        "stock": 15
+      },
+      {
+        "id": "v1-3",
+        "name": "1kg",
+        "type": "size",
+        "value": "1kg",
+        "stock": 15
+      }
+    ]
+  },
+  {
+    "id": "prod-002",
+    "name": "Ethiopia Yirgacheffe",
+    "description": "Single origin light roast with bright acidity, floral aroma, and notes of jasmine and citrus.",
+    "category": "beans",
+    "price": 345000,
+    "image": "https://algeriancoffeestores.com/cdn/shop/files/Coffee.Medium.sm_5f54eea1-59ad-45ba-9652-7f10f5ff193c_460x@2x.jpg?v=1687862281",
+    "rating": 4.8,
+    "reviews": 156,
+    "stock": 30,
+    "inStock": true,
+    "featured": true,
+    "variants": [
+      {
+        "id": "v2-1",
+        "name": "250g",
+        "type": "size",
+        "value": "250g",
+        "price": 345000,
+        "stock": 20
+      },
+      {
+        "id": "v2-2",
+        "name": "500g",
+        "type": "size",
+        "value": "500g",
+        "price": 620000,
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "id": "prod-003",
+    "name": "Artisan Ceramic Cup",
+    "description": "Hand-crafted ceramic cup designed to keep your coffee warm and enhance the tasting experience.",
+    "category": "accessories",
+    "price": 375000,
+    "image": "https://down-id.img.susercontent.com/file/1847a4a347614d99b98fb51dc4c2c323",
+    "rating": 4.7,
+    "reviews": 89,
+    "stock": 45,
+    "inStock": true,
+    "variants": [
+      {
+        "id": "v3-1",
+        "name": "8oz",
+        "type": "size",
+        "value": "8oz",
+        "stock": 20
+      },
+      {
+        "id": "v3-2",
+        "name": "12oz",
+        "type": "size",
+        "value": "12oz",
+        "stock": 25
+      }
+    ]
+  },
+  {
+    "id": "prod-004",
+    "name": "Espresso Machine Pro",
+    "description": "Professional grade espresso machine for home use with PID temperature control.",
+    "category": "equipment",
+    "price": 13500000,
+    "originalPrice": 15000000,
+    "image": "https://www.minipcaffe.com/cdn/shop/products/Profitec_Pro_500_PID_Espresso_Machine_-3.jpg?v=1775015648&width=1445",
+    "rating": 4.8,
+    "reviews": 124,
+    "stock": 12,
+    "inStock": true,
+    "featured": true
+  },
+  {
+    "id": "prod-005",
+    "name": "Premium Burr Grinder",
+    "description": "Consistent grind size for the perfect extraction, featuring 54mm flat steel burrs.",
+    "category": "equipment",
+    "price": 3000000,
+    "originalPrice": 3750000,
+    "image": "https://espresso-experts.com/cdn/shop/files/BellucciCasagrinderCoffeecontainer.jpg?v=1715372395",
+    "rating": 4.9,
+    "reviews": 89,
+    "stock": 25,
+    "inStock": true,
+    "featured": true
+  },
+  {
+    "id": "prod-006",
+    "name": "Pour Over Kettle",
+    "description": "Gooseneck kettle for precise water flow control, essential for manual brewing.",
+    "category": "accessories",
+    "price": 750000,
+    "image": "https://roguewavecoffee.ca/cdn/shop/articles/Kettles_2.jpg?v=1638042716&width=1100",
+    "rating": 4.7,
+    "reviews": 210,
+    "stock": 40,
+    "inStock": true
+  },
+  {
+    "id": "prod-007",
+    "name": "Digital Coffee Scale",
+    "description": "High-precision scale to 0.1g with built-in timer for perfect brew ratios.",
+    "category": "accessories",
+    "price": 525000,
+    "image": "https://down-id.img.susercontent.com/file/863195d1400d545f0166ab9f1b79dc6c",
+    "rating": 4.6,
+    "reviews": 156,
+    "stock": 30,
+    "inStock": true,
+    "featured": true
+  },
+  {
+    "id": "prod-008",
+    "name": "Reusable Coffee Filter",
+    "description": "Eco-friendly stainless steel filter that fits most pour-over drippers.",
+    "category": "accessories",
+    "price": 240000,
+    "image": "https://m.media-amazon.com/images/I/81QwcvumW-L.jpg",
+    "rating": 4.5,
+    "reviews": 45,
+    "stock": 60,
+    "inStock": true
+  }
+]
