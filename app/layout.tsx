@@ -46,6 +46,7 @@ export const viewport: Viewport = {
 
 import { CartSync } from '@/components/cart-sync'
 import { AddedToBagNotification } from '@/components/added-to-bag-notification'
+import { ChatbotWidget } from '@/components/chatbot-widget'
 
 export default function RootLayout({
   children,
@@ -56,12 +57,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${outfit.variable} ${geistMono.variable} font-sans antialiased`}>
         <MotionProvider >
-        <ThemeProvider>
-          <CartSync />
-          {children}
-          <AddedToBagNotification />
-          <Toaster />
-        </ThemeProvider>
+          <ThemeProvider>
+            <CartSync />
+            {children}
+            <AddedToBagNotification />
+            <ChatbotWidget />
+            <Toaster />
+          </ThemeProvider>
         </MotionProvider>
         <Analytics />
       </body>

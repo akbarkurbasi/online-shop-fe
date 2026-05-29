@@ -15,11 +15,12 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
-import { X, SlidersHorizontal, Search, ChevronDown, ChevronUp } from 'lucide-react'
+import { X, SlidersHorizontal, Search, ChevronDown, ChevronUp, Loader2, Sparkles } from 'lucide-react'
 import { cn, formatPrice } from '@/lib/utils'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CartDrawer } from '@/components/cart-drawer'
+import { useAuth } from '@/lib/store/auth'
 
 import { productService } from '@/services/productService'
 
@@ -52,6 +53,7 @@ export function ShopContent({ initialProducts }: ShopContentProps) {
     resetFilters,
   } = useFilters()
 
+  const { user } = useAuth()
   const [categories, setCategoriesList] = useState<Category[]>([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [inStockOnly, setInStockOnly] = useState(false)
@@ -60,6 +62,10 @@ export function ShopContent({ initialProducts }: ShopContentProps) {
     size: true,
     price: true,
   })
+
+  // AI recommendation state
+  const [aiProducts, setAiProducts] = useState<Product[]>([])
+  const [aiLoading, setAiLoading] = useState(false)
 
   // Pagination (client-side, after filter/sort)
   const PER_PAGE_OPTIONS = [12, 24, 36, 48]
@@ -78,6 +84,31 @@ export function ShopContent({ initialProducts }: ShopContentProps) {
     }
     fetchCats()
   }, [])
+
+  // Debounced AI recommendations whenever search query changes
+  useEffect(() => {
+    if (!searchQuery || searchQuery.trim().length < 3) {
+      setAiProducts([])
+      return
+    }
+    const timer = setTimeout(async () => {
+      setAiLoading(true)
+      try {
+        const userId = user ? parseInt(user.id, 10) : undefined
+        const result = await productService.getRecommendations(
+          searchQuery,
+          userId && !isNaN(userId) ? userId : undefined
+        )
+        setAiProducts(result.products || [])
+      } catch (err) {
+        console.error('AI recommendations error:', err)
+        setAiProducts([])
+      } finally {
+        setAiLoading(false)
+      }
+    }, 600)
+    return () => clearTimeout(timer)
+  }, [searchQuery, user])
 
   // Set initial category from URL params
   useEffect(() => {
@@ -496,47 +527,63 @@ export function ShopContent({ initialProducts }: ShopContentProps) {
 
             {/* Products Grid */}
             <div className="lg:col-span-3 space-y-6">
-              {/* Controls row */}
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-5 border-b border-border">
-                <div>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground mb-2">
-                    / Showing
-                  </p>
-                  <p className="text-2xl italic font-black uppercase tracking-tighter">
-                    {products.length}
-                    <span className="text-muted-foreground font-mono not-italic tracking-[0.2em] text-xs ml-2">
-                      {products.length === 1 ? 'Piece' : 'Pieces'}
-                    </span>
-                  </p>
-                </div>
-                <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-                  <Select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
-                    <SelectTrigger className="h-11 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] min-w-[200px]">
-                      <SelectValue placeholder="Sort" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="newest">Newest</SelectItem>
-                      <SelectItem value="popular">Popular</SelectItem>
-                      <SelectItem value="price-low">Price · Low → High</SelectItem>
-                      <SelectItem value="price-high">Price · High → Low</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setMobileFiltersOpen(true)}
-                    className="lg:hidden h-11 px-4 rounded-md text-[11px] font-mono uppercase tracking-[0.3em] flex items-center gap-2"
-                  >
-                    <SlidersHorizontal className="h-3.5 w-3.5" />
-                    Filters
-                    {activeFilterCount > 0 && (
-                      <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 bg-foreground text-background text-[10px] font-mono tracking-tight rounded-sm">
-                        {activeFilterCount}
-                      </span>
+              {/* Controls row — AI mode hides sort dropdown */}
+              {(() => {
+                const isAiMode = searchQuery.trim().length >= 3
+                const displayCount = isAiMode && !aiLoading ? aiProducts.length : products.length
+                return (
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-5 border-b border-border">
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground mb-2 flex items-center gap-2">
+                        / Showing
+                        {isAiMode && (
+                          <span className="inline-flex items-center gap-1 text-accent">
+                            <Sparkles className="h-2.5 w-2.5" />
+                            Volt AI
+                          </span>
+                        )}
+                      </p>
+                      <p className="text-2xl italic font-black uppercase tracking-tighter">
+                        {aiLoading && isAiMode ? (
+                          <span className="inline-block w-8 h-7 bg-secondary/50 rounded animate-pulse" />
+                        ) : displayCount}
+                        <span className="text-muted-foreground font-mono not-italic tracking-[0.2em] text-xs ml-2">
+                          {displayCount === 1 ? 'Piece' : 'Pieces'}
+                        </span>
+                      </p>
+                    </div>
+                    {!isAiMode && (
+                      <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                        <Select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
+                          <SelectTrigger className="h-11 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] min-w-[200px]">
+                            <SelectValue placeholder="Sort" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="newest">Newest</SelectItem>
+                            <SelectItem value="popular">Popular</SelectItem>
+                            <SelectItem value="price-low">Price · Low → High</SelectItem>
+                            <SelectItem value="price-high">Price · High → Low</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() => setMobileFiltersOpen(true)}
+                          className="lg:hidden h-11 px-4 rounded-md text-[11px] font-mono uppercase tracking-[0.3em] flex items-center gap-2"
+                        >
+                          <SlidersHorizontal className="h-3.5 w-3.5" />
+                          Filters
+                          {activeFilterCount > 0 && (
+                            <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 bg-foreground text-background text-[10px] font-mono tracking-tight rounded-sm">
+                              {activeFilterCount}
+                            </span>
+                          )}
+                        </Button>
+                      </div>
                     )}
-                  </Button>
-                </div>
-              </div>
+                  </div>
+                )
+              })()}
 
               {/* Active filter pills */}
               {hasFilters && (
@@ -603,78 +650,117 @@ export function ShopContent({ initialProducts }: ShopContentProps) {
                 </div>
               )}
 
-              {/* Grid / Empty */}
-              {products.length === 0 ? (
-                <div className="flex flex-col items-start py-12 border border-border rounded-md p-12 space-y-5">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">/ No Results</p>
-                  <h3 className="text-3xl italic font-black uppercase tracking-tighter">No Matches Found</h3>
-                  <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
-                    Refine your filters or clear them to keep browsing the full collection.
-                  </p>
-                  <Button onClick={clearAll} className="rounded-md h-12 px-6 text-[11px] font-mono uppercase tracking-[0.3em]">
-                    Reset Filters →
-                  </Button>
-                </div>
-              ) : (
-                <>
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 md:gap-x-4 gap-y-10 animate-in fade-in duration-500">
-                    {paginated.map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
+              {/* Unified Grid — AI results when search active, catalog otherwise */}
+              {(() => {
+                const isAiMode = searchQuery.trim().length >= 3
 
-                  {/* Pagination */}
-                  {products.length > 0 && (
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 mt-2 border-t border-border">
-                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
-                        Showing {(safePage - 1) * perPage + 1}–{Math.min(safePage * perPage, products.length)} of {products.length}
-                      </p>
-
-                      <div className="flex items-center gap-2">
-                        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground hidden sm:inline">
-                          Per page
-                        </p>
-                        <Select value={String(perPage)} onValueChange={(v) => setPerPage(Number(v))}>
-                          <SelectTrigger className="h-9 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] w-20">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {PER_PAGE_OPTIONS.map((n) => (
-                              <SelectItem key={n} value={String(n)}>
-                                {n}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                          disabled={safePage <= 1}
-                          className="h-9 px-3 rounded-md text-[10px] font-mono uppercase tracking-[0.3em]"
-                        >
-                          ← Prev
-                        </Button>
-                        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground px-2">
-                          {safePage} / {totalPages}
-                        </span>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                          disabled={safePage >= totalPages}
-                          className="h-9 px-3 rounded-md text-[10px] font-mono uppercase tracking-[0.3em]"
-                        >
-                          Next →
-                        </Button>
-                      </div>
+                // AI loading skeletons
+                if (isAiMode && aiLoading) {
+                  return (
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 md:gap-x-4 gap-y-10">
+                      {[...Array(6)].map((_, i) => (
+                        <div key={i} className="space-y-3">
+                          <div className="aspect-[3/4] rounded-md bg-secondary/30 animate-pulse" />
+                          <div className="h-3 w-3/4 bg-secondary/30 rounded animate-pulse" />
+                          <div className="h-3 w-1/2 bg-secondary/30 rounded animate-pulse" />
+                        </div>
+                      ))}
                     </div>
-                  )}
-                </>
-              )}
+                  )
+                }
+
+                // AI results grid
+                if (isAiMode && aiProducts.length > 0) {
+                  return (
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 md:gap-x-4 gap-y-10 animate-in fade-in duration-500">
+                      {aiProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                      ))}
+                    </div>
+                  )
+                }
+
+                // No results at all
+                const displayList = isAiMode ? [] : paginated
+                const isEmpty = isAiMode ? !aiLoading && aiProducts.length === 0 : products.length === 0
+
+                if (isEmpty) {
+                  return (
+                    <div className="flex flex-col items-start py-12 border border-border rounded-md p-12 space-y-5">
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">/ No Results</p>
+                      <h3 className="text-3xl italic font-black uppercase tracking-tighter">No Matches Found</h3>
+                      <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
+                        Refine your filters or clear them to keep browsing the full collection.
+                      </p>
+                      <Button onClick={clearAll} className="rounded-md h-12 px-6 text-[11px] font-mono uppercase tracking-[0.3em]">
+                        Reset Filters →
+                      </Button>
+                    </div>
+                  )
+                }
+
+                // Regular paginated catalog grid
+                return (
+                  <>
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 md:gap-x-4 gap-y-10 animate-in fade-in duration-500">
+                      {displayList.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                      ))}
+                    </div>
+
+                    {/* Pagination */}
+                    {products.length > 0 && (
+                      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 mt-2 border-t border-border">
+                        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
+                          Showing {(safePage - 1) * perPage + 1}–{Math.min(safePage * perPage, products.length)} of {products.length}
+                        </p>
+
+                        <div className="flex items-center gap-2">
+                          <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground hidden sm:inline">
+                            Per page
+                          </p>
+                          <Select value={String(perPage)} onValueChange={(v) => setPerPage(Number(v))}>
+                            <SelectTrigger className="h-9 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] w-20">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {PER_PAGE_OPTIONS.map((n) => (
+                                <SelectItem key={n} value={String(n)}>
+                                  {n}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                            disabled={safePage <= 1}
+                            className="h-9 px-3 rounded-md text-[10px] font-mono uppercase tracking-[0.3em]"
+                          >
+                            ← Prev
+                          </Button>
+                          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground px-2">
+                            {safePage} / {totalPages}
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                            disabled={safePage >= totalPages}
+                            className="h-9 px-3 rounded-md text-[10px] font-mono uppercase tracking-[0.3em]"
+                          >
+                            Next →
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )
+              })()}
             </div>
           </div>
         </div>

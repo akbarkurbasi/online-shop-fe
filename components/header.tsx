@@ -1,15 +1,18 @@
 'use client'
 
 import Link from 'next/link'
-import { ShoppingCart, Menu, X, Search, LogOut, User, Settings, ChevronDown } from 'lucide-react'
+import { ShoppingCart, Menu, X, Search, LogOut, User, Settings, ChevronDown, Sparkles, Loader2, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useCart } from '@/lib/store/cart'
 import { useUI } from '@/lib/store/ui'
 import { useAuth } from '@/lib/store/auth'
-import { useState } from 'react'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
+import { useState, useEffect, useRef } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { cn, formatPrice } from '@/lib/utils'
 import { CartDrawer } from '@/components/cart-drawer'
+import { productService } from '@/services/productService'
+import { useFilters } from '@/lib/store/filters'
+import type { Product } from '@/lib/types'
 
 type NavLink = {
   href: string
@@ -57,11 +60,16 @@ export function Header() {
   const { items } = useCart()
   const { isMobileMenuOpen, toggleMobileMenu, toggleCart } = useUI()
   const { user, logout } = useAuth()
+  const { setSearchQuery: setShopSearch } = useFilters()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [aiResults, setAiResults] = useState<Product[]>([])
+  const [aiLoading, setAiLoading] = useState(false)
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const pathname = usePathname() ?? '/'
-  // Count of distinct line items in the cart — matches the
-  // `/ Bag · N pieces` count shown in the cart drawer header.
+  const router = useRouter()
+  // Count of distinct line items in the cart
   const totalItems = items.length
 
   const initials = user?.name
@@ -69,6 +77,50 @@ export function Header() {
     : ''
 
   const visibleLinks = NAV_LINKS.filter(l => !l.guestOnly || user?.role === 'guest')
+
+  // Debounced AI search for navbar
+  useEffect(() => {
+    if (!searchQuery || searchQuery.trim().length < 2) {
+      setAiResults([])
+      return
+    }
+    const timer = setTimeout(async () => {
+      setAiLoading(true)
+      try {
+        const userId = user ? parseInt(user.id, 10) : undefined
+        const result = await productService.getRecommendations(
+          searchQuery,
+          userId && !isNaN(userId) ? userId : undefined
+        )
+        setAiResults((result.products || []).slice(0, 5))
+      } catch {
+        setAiResults([])
+      } finally {
+        setAiLoading(false)
+      }
+    }, 400)
+    return () => clearTimeout(timer)
+  }, [searchQuery, user])
+
+  const handleSearchOpen = () => {
+    setIsSearchOpen(true)
+    setSearchQuery('')
+    setAiResults([])
+    setTimeout(() => searchInputRef.current?.focus(), 50)
+  }
+
+  const handleSearchClose = () => {
+    setIsSearchOpen(false)
+    setSearchQuery('')
+    setAiResults([])
+  }
+
+  const handleGoToShop = (q: string) => {
+    if (!q.trim()) return
+    setShopSearch(q.trim())
+    router.push('/shop')
+    handleSearchClose()
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
@@ -124,7 +176,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             {/* Search */}
             <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              onClick={handleSearchOpen}
               className="h-10 w-10 flex items-center justify-center border border-transparent hover:border-foreground hover:bg-foreground hover:text-background transition-colors"
               aria-label="Search"
             >
@@ -153,15 +205,13 @@ export function Header() {
                 <>
                   <button
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className={`h-10 flex items-center gap-2 pl-1 pr-3 border transition-colors ${
-                      isUserMenuOpen
+                    className={`h-10 flex items-center gap-2 pl-1 pr-3 border transition-colors ${isUserMenuOpen
                         ? 'border-foreground bg-foreground text-background'
                         : 'border-transparent hover:border-foreground'
-                    }`}
+                      }`}
                   >
-                    <div className={`w-8 h-8 border flex items-center justify-center text-[10px] font-mono uppercase tracking-tight ${
-                      isUserMenuOpen ? 'border-background' : 'border-foreground'
-                    }`}>
+                    <div className={`w-8 h-8 border flex items-center justify-center text-[10px] font-mono uppercase tracking-tight ${isUserMenuOpen ? 'border-background' : 'border-foreground'
+                      }`}>
                       {initials || 'VL'}
                     </div>
                     <span className="text-[11px] font-mono uppercase tracking-[0.2em] hidden lg:inline max-w-[120px] truncate">
@@ -257,24 +307,99 @@ export function Header() {
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* AI-Powered Search Panel */}
         {isSearchOpen && (
-          <div className="border-t border-border pt-4 pb-5">
-            <div className="flex items-center gap-3">
-              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground shrink-0">/ Search</span>
+          <div className="border-t border-border">
+            {/* Input row */}
+            <div className="flex items-center gap-3 py-4">
+              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground shrink-0 flex items-center gap-1.5">
+                <Sparkles className="h-2.5 w-2.5 text-accent" />
+                / Search
+              </span>
               <input
+                ref={searchInputRef}
                 type="text"
-                placeholder="Search products, collections, drops..."
-                className="flex-1 px-0 py-2 bg-transparent border-b border-foreground rounded-md focus:outline-none text-sm font-medium tracking-tight placeholder:text-muted-foreground"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleGoToShop(searchQuery)
+                  if (e.key === 'Escape') handleSearchClose()
+                }}
+                placeholder="Cari produk, koleksi, pakaian..."
+                className="flex-1 px-0 py-2 bg-transparent border-b border-foreground focus:outline-none text-sm font-medium tracking-tight placeholder:text-muted-foreground"
                 autoFocus
               />
+              {aiLoading && <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground shrink-0" />}
               <button
-                onClick={() => setIsSearchOpen(false)}
+                onClick={handleSearchClose}
                 className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors shrink-0"
               >
                 Close
               </button>
             </div>
+
+            {/* AI Results */}
+            {searchQuery.trim().length >= 2 && (
+              <div className="pb-5">
+                {aiLoading && aiResults.length === 0 ? (
+                  /* Skeleton */
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="space-y-2">
+                        <div className="aspect-[3/4] rounded-sm bg-secondary/30 animate-pulse" />
+                        <div className="h-2.5 w-3/4 bg-secondary/30 rounded animate-pulse" />
+                        <div className="h-2.5 w-1/2 bg-secondary/30 rounded animate-pulse" />
+                      </div>
+                    ))}
+                  </div>
+                ) : aiResults.length > 0 ? (
+                  <>
+                    <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent mb-3 flex items-center gap-1.5">
+                      <Sparkles className="h-2.5 w-2.5" />
+                      Volt AI &mdash; {aiResults.length} hasil
+                    </p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                      {aiResults.map((product) => (
+                        <Link
+                          key={product.id}
+                          href={`/products/${product.id}`}
+                          onClick={handleSearchClose}
+                          className="group flex flex-col border border-border hover:border-accent/50 rounded-sm overflow-hidden transition-all"
+                        >
+                          <div className="relative aspect-[3/4] bg-secondary/20 overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                            />
+                          </div>
+                          <div className="p-2 bg-background/80">
+                            <p className="text-[9px] font-bold uppercase tracking-tight line-clamp-1 group-hover:text-accent transition-colors">
+                              {product.name}
+                            </p>
+                            <p className="text-[9px] font-mono text-muted-foreground mt-0.5">
+                              {formatPrice(product.price)}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => handleGoToShop(searchQuery)}
+                      className="mt-4 flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Lihat semua hasil di katalog
+                      <ArrowRight className="h-3 w-3" />
+                    </button>
+                  </>
+                ) : !aiLoading ? (
+                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
+                    Tidak ada hasil untuk &ldquo;{searchQuery}&rdquo;
+                  </p>
+                ) : null}
+              </div>
+            )}
           </div>
         )}
 

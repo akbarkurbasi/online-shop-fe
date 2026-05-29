@@ -6,6 +6,7 @@ import { Header } from '@/components/header'
 import { CartDrawer } from '@/components/cart-drawer'
 import { Footer } from '@/components/footer'
 import { ProductCard } from '@/components/product-card'
+import { RecommendedSection } from '@/components/recommended-section'
 import type { Product, Category } from '@/lib/types'
 import { Stagger, Item } from '@/components/motion/Stagger'
 import { productService } from '@/services/productService'
@@ -149,6 +150,9 @@ export default async function Home() {
           </Stagger>
         </div>
       </section>
+
+      {/* VOLT AI — Personalized Recommendations */}
+      <RecommendedSection />
 
       {/* PERFORMANCE PILLARS */}
       <section className="py-24 bg-background border-y border-border">

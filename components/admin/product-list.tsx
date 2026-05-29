@@ -17,6 +17,7 @@ import {
   Star,
   EyeOff,
   X,
+  RefreshCw,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -86,6 +87,30 @@ export function ProductList() {
   const [perPage, setPerPage] = useState<number>(8)
   const [currentPage, setCurrentPage] = useState(1)
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
+  const [isSyncing, setIsSyncing] = useState(false)
+
+  const handleBulkSync = async () => {
+    if (products.length === 0) {
+      toast.error('No products available to sync')
+      return
+    }
+    setIsSyncing(true)
+    const loadToast = toast.loading('Syncing products to ML service...')
+    try {
+      const response = await adminService.bulkSyncProducts(products)
+      if (response.sync_success) {
+        toast.success(response.message || 'All products synced to recommendation service!')
+      } else {
+        toast.error(response.message || 'Sync failed')
+      }
+    } catch (error) {
+      console.error('Failed to sync products:', error)
+      toast.error('Failed to sync products to recommendation service')
+    } finally {
+      toast.dismiss(loadToast)
+      setIsSyncing(false)
+    }
+  }
 
   // Bulk-action dialog
   const [bulkAction, setBulkAction] = useState<BulkAction | null>(null)
@@ -399,7 +424,21 @@ export function ProductList() {
             </button>
           </div>
 
-          <Button asChild className="rounded-md h-11 px-5 text-[11px] font-mono uppercase tracking-[0.3em] ml-auto lg:ml-0">
+          <Button
+            onClick={handleBulkSync}
+            disabled={isSyncing || isLoading}
+            variant="outline"
+            className="rounded-md h-11 px-5 text-[11px] font-mono uppercase tracking-[0.3em] ml-auto lg:ml-0 border-border text-foreground hover:bg-secondary"
+          >
+            {isSyncing ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin mr-2" />
+            ) : (
+              <RefreshCw className="h-3.5 w-3.5 mr-2" />
+            )}
+            Sync Products
+          </Button>
+
+          <Button asChild className="rounded-md h-11 px-5 text-[11px] font-mono uppercase tracking-[0.3em]">
             <Link href="/admin/products/new">
               <Plus className="h-3.5 w-3.5 mr-2" />
               New Product

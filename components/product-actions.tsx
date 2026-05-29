@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useCart } from '@/lib/store/cart'
 import { useAuth } from '@/lib/store/auth'
+import { productService } from '@/services/productService'
 import type { Product, Variant } from '@/lib/types'
 import { cn, formatPrice } from '@/lib/utils'
 
@@ -40,6 +41,16 @@ export function ProductActions({ product }: ProductActionsProps) {
   const [error, setError] = useState<string | null>(null)
   const [showLoginDialog, setShowLoginDialog] = useState(false)
 
+  // Track product view interaction on mount
+  useEffect(() => {
+    if (user && product?.id) {
+      const userIdNum = parseInt(user.id, 10)
+      if (!isNaN(userIdNum)) {
+        productService.trackInteraction(userIdNum, product.id, 'view').catch(console.error)
+      }
+    }
+  }, [user, product?.id])
+
   // Group variants by type
   const variantGroups = product.variants?.reduce((acc, variant) => {
     if (!acc[variant.type]) acc[variant.type] = []
@@ -52,12 +63,12 @@ export function ProductActions({ product }: ProductActionsProps) {
   // Calculate current price based on selected variants
   const getCurrentPrice = () => {
     let total = product.price
-    
+
     // In this simplified logic, we take the price of the "primary" variant if it has one
     // or sum adjustments. Most e-commerce use "Variant Price" as the final price.
-    
+
     const selectedList = Object.values(selectedVariants)
-    
+
     // If any selected variant has an explicit price, use the highest one (or logic that fits)
     // Here we'll take the price from the variant if set, otherwise add adjustments
     const explicitPrice = selectedList.find(v => v.price != null)?.price
@@ -140,19 +151,19 @@ export function ProductActions({ product }: ProductActionsProps) {
     <div className="flex flex-col gap-8">
       {/* Dynamic Price Display inside Actions for clarity */}
       <div className="space-y-2">
-         <div className="flex items-baseline gap-4">
-            <span className="text-4xl font-extrabold tracking-tighter text-primary">
-              {formatPrice(currentPrice)}
+        <div className="flex items-baseline gap-4">
+          <span className="text-4xl font-extrabold tracking-tighter text-primary">
+            {formatPrice(currentPrice)}
+          </span>
+          {product.originalPrice && currentPrice <= product.price && (
+            <span className="text-xl text-muted-foreground line-through decoration-destructive/40 font-medium">
+              {formatPrice(product.originalPrice)}
             </span>
-            {product.originalPrice && currentPrice <= product.price && (
-              <span className="text-xl text-muted-foreground line-through decoration-destructive/40 font-medium">
-                {formatPrice(product.originalPrice)}
-              </span>
-            )}
-          </div>
-          <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
-            / Unit Price · {Object.values(selectedVariants).map(v => v.name).join(' ') || 'Base'}
-          </p>
+          )}
+        </div>
+        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
+          / Unit Price · {Object.values(selectedVariants).map(v => v.name).join(' ') || 'Base'}
+        </p>
       </div>
 
       <div className="h-px bg-border/50" />
@@ -178,11 +189,10 @@ export function ProductActions({ product }: ProductActionsProps) {
                     })
                     setError(null)
                   }}
-                  className={`min-w-[64px] h-12 px-4 rounded-md border font-bold transition-colors text-xs flex flex-col items-center justify-center gap-0.5 ${
-                    selectedVariants[type]?.id === variant.id
+                  className={`min-w-[64px] h-12 px-4 rounded-md border font-bold transition-colors text-xs flex flex-col items-center justify-center gap-0.5 ${selectedVariants[type]?.id === variant.id
                       ? 'border-foreground bg-foreground text-background'
                       : 'border-border bg-background text-muted-foreground hover:border-foreground hover:text-foreground'
-                  }`}
+                    }`}
                 >
                   <span>{variant.name}</span>
                   {variant.price && (

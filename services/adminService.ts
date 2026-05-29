@@ -52,6 +52,9 @@ export const adminService = {
   deleteProduct: (id: string) =>
     privateApiClient.delete<{ message: string }>(`/api/v1/products/${id}`),
 
+  bulkSyncProducts: (products: Product[]) =>
+    privateApiClient.post<{ message: string; sync_success: boolean }>('/ml-service/products/bulk', { products }),
+
   // Category Management
   getCategories: () =>
     privateApiClient.get<{ data: Category[] }>('/api/v1/categories'),

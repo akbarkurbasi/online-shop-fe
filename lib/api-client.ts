@@ -115,6 +115,9 @@ async function apiFetch<T>(
 export const publicApiClient = {
   get: <T>(endpoint: string, config?: RequestConfig) =>
     apiFetch<T>(endpoint, { ...config, method: 'GET' }, false),
+
+  post: <T>(endpoint: string, data?: unknown, config?: RequestConfig) =>
+    apiFetch<T>(endpoint, { ...config, method: 'POST', body: data instanceof FormData ? data : JSON.stringify(data) }, false),
 }
 
 // ─── PRIVATE API CLIENT ───────────────────────────────────────────────────

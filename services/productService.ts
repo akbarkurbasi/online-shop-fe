@@ -26,4 +26,15 @@ export const productService = {
 
   getCategories: () =>
     publicApiClient.get<{ data: Category[] }>('/api/v1/categories'),
+
+  trackInteraction: (userId: number, productId: string, action: 'click' | 'view' | 'purchase') =>
+    publicApiClient.post<{ message: string; status: string }>('/ml-service/track', { user_id: userId, product_id: productId, action }),
+
+  queryChatbot: (query: string) =>
+    publicApiClient.post<{ response: string; source_products: Product[]; is_fallback: boolean }>('/ml-service/chatbot', { query }),
+
+  getRecommendations: (query: string, userId?: number) =>
+    publicApiClient.get<{ message: string; products: Product[]; is_fallback: boolean }>('/ml-service/recommendations', {
+      params: { q: query, ...(userId ? { user_id: userId } : {}) } as Record<string, string | number>,
+    }),
 }

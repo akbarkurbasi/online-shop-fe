@@ -4,12 +4,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Product } from '@/lib/types'
 import { formatPrice, cn } from '@/lib/utils'
+import { useAuth } from '@/lib/store/auth'
+import { productService } from '@/services/productService'
 
 interface ProductCardProps {
   product: Product
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { user } = useAuth()
   const isSoldOut = !product.inStock || product.stock === 0
   const isLowStock = !isSoldOut && product.stock > 0 && product.stock <= 5
   const isOnSale =
@@ -31,9 +34,19 @@ export function ProductCard({ product }: ProductCardProps) {
 
   const colorVariants = product.variants?.filter((v) => v.type === 'color') ?? []
 
+  const handleTrackClick = () => {
+    if (user) {
+      const userIdNum = parseInt(user.id, 10)
+      if (!isNaN(userIdNum)) {
+        productService.trackInteraction(userIdNum, product.id, 'click').catch(console.error)
+      }
+    }
+  }
+
   return (
     <Link
       href={`/products/${product.id}`}
+      onClick={handleTrackClick}
       className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md"
       aria-disabled={isSoldOut}
     >

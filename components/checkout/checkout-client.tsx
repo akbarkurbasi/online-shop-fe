@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useCart } from '@/lib/store/cart'
 import { useUI } from '@/lib/store/ui'
+import { useAuth } from '@/lib/store/auth'
 import { orderService } from '@/services/orderService'
 import { formatPrice, cn } from '@/lib/utils'
 
@@ -52,6 +53,7 @@ type CheckoutForm = z.infer<typeof checkoutSchema>
 
 export function CheckoutClient() {
   const { items, getTotalPrice, removeSelectedItems } = useCart()
+  const { user } = useAuth()
   const selectedItems = useMemo(() => items.filter((i) => i.selected), [items])
   const { toggleCart } = useUI()
 
@@ -132,6 +134,17 @@ export function CheckoutClient() {
         })),
         total: finalTotal,
       })
+
+      // Track purchase interaction
+      if (user && selectedItems.length > 0) {
+        const userIdNum = parseInt(user.id, 10)
+        if (!isNaN(userIdNum)) {
+          const { productService } = await import('@/services/productService')
+          selectedItems.forEach((item) => {
+            productService.trackInteraction(userIdNum, item.product_id, 'purchase').catch(console.error)
+          })
+        }
+      }
 
       const redirectUrl = response?.payment_url
       if (redirectUrl) {
